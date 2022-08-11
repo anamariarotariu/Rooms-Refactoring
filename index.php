@@ -1,6 +1,5 @@
 <?php
 
-use App\HotelManager;
 use App\Rooms\DoubleRoom;
 use App\Rooms\LargeRoom;
 use App\Rooms\SingleRoom;

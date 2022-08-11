@@ -23,7 +23,7 @@ class Tourist implements BookRoomInterface
     /**
      * @throws Exception
      */
-    public function bookRoom(Room $room): bool
+    public function bookRoom(Room $room): void
     {
         if ($room->isBooked())
             throw new Exception("Room is already booked.");
@@ -34,7 +34,6 @@ class Tourist implements BookRoomInterface
                 . $this->getFirstName() . " and the room has "
                 . $room->getBedType()
                 . ".\n";
-            return true;
         }
     }
 

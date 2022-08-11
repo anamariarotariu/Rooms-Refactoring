@@ -6,5 +6,5 @@ use App\Rooms\Room;
 
 interface BookRoomInterface
 {
-    public function bookRoom(Room $room): bool;
+    public function bookRoom(Room $room): void;
 }
