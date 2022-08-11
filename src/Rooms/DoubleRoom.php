@@ -1,10 +1,7 @@
 <?php
 
 namespace App\Rooms;
-
-use App\BedTypeInterface;
-
-class DoubleRoom extends Room implements BedTypeInterface
+class DoubleRoom extends Room
 {
     public function getBedType(): string
     {

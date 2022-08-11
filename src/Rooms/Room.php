@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Rooms;
-
-class Room
+abstract class Room
 {
     protected array $roomSettings;
     protected int $type;
@@ -14,6 +13,7 @@ class Room
         $this->type = $type;
         $this->price = $price;
     }
+   abstract public function getBedType(): string;
 
     /** generating setters and getters for class's attributes */
 
@@ -46,5 +46,6 @@ class Room
     {
         $this->price = $price;
     }
+
 
 }
