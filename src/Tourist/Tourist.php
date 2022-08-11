@@ -4,6 +4,7 @@ namespace App\Tourist;
 
 use App\BookRoomInterface;
 use App\Rooms\Room;
+use Exception;
 
 class Tourist implements BookRoomInterface
 {
@@ -19,13 +20,22 @@ class Tourist implements BookRoomInterface
         $this->lastName = $lastName;
     }
 
+    /**
+     * @throws Exception
+     */
     public function bookRoom(Room $room): bool
     {
         if ($room->isBooked())
-            return false;
-        $room->setIsBooked(true);
-        echo "Room with number " . $room->getRoomSettings()[1] . " booked successfully.\n";
-        return true;
+            throw new Exception("Room is already booked.");
+        else {
+            $room->setIsBooked(true);
+            echo "Room with number " . $room->getRoomSettings()[1]
+                . " booked successfully by "
+                . $this->getFirstName() . " and the room has "
+                . $room->getBedType()
+                . ".\n";
+            return true;
+        }
     }
 
     public function getFirstName(): string

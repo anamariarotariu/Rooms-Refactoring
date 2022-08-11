@@ -8,19 +8,14 @@ use App\Tourist\Tourist;
 
 require 'vendor/autoload.php';
 try {
-    $largeRoom = new LargeRoom(['second floor', 12], 2, 240, false);
-    $largeRoom2 = new LargeRoom(['second floor', 10], 2, 240, false);
-    $singleRoom = new SingleRoom(['first floor', 3], 2, 100, false);
-    $singleRoom2 = new SingleRoom(['first floor', 2], 2, 100, false);
-    $doubleRoom = new DoubleRoom(['third floor', 20], 3, 200, false);
-    $doubleRoom2 = new DoubleRoom(['first floor', 1], 1, 50, false);
-    $tourist = new Tourist('Jessie', 'Jones');
-    $tourist1 = new Tourist('Bob', 'Swift');
-    $manager = new HotelManager($tourist, $singleRoom, $doubleRoom);
-    $tourist->bookRoom($doubleRoom);
-    $result1 = $manager->manage($doubleRoom);
-    $tourist1->bookRoom($largeRoom);
-    $result2 = $manager->manage($largeRoom);
+    $largeRoom = new LargeRoom(['first floor', 2], 1, 140, false);
+    $tourist = new Tourist('Jessie', 'Pinkman');
+    $tourist->bookRoom($largeRoom);
+    $tourist1 = new Tourist('Walter', 'Wilde');
+    $tourist2 = new Tourist('Bob', 'White');
+    $singleRoom = new SingleRoom(['second floor', 5], 2, 200, false);
+    $tourist1->bookRoom($singleRoom);
+    $tourist->bookRoom($singleRoom);
 } catch (Exception $e) {
     echo $e;
 }
