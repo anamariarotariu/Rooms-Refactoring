@@ -26,16 +26,14 @@ class HotelManager
      */
     public function manage(Room $room): string
     {
-        echo count($this->room) . "\n";
-        foreach ($this->room as $roomIndex) {
-            if ($room->getRoomSettings()[1] == $this->room[$roomIndex]->getRoomSettings()[1])
-                throw new Exception('Room already booked.');
+        if ($room->isBooked()) {
+            throw new Exception('Room with number ' . $room->getRoomSettings()[1] . ' already booked.');
+        } else {
+            return sprintf("Tourist %s %s booked the room no %d which has %s.\n",
+                $this->tourist->getFirstName(),
+                $this->tourist->getLastName(),
+                $room->getRoomSettings()[1],
+                $room->getBedType());
         }
-        return sprintf("Tourist %s %s booked the room no %d which has %s.\n",
-            $this->tourist->getFirstName(),
-            $this->tourist->getLastName(),
-            $room->getRoomSettings()[1],
-            $room->getBedType());
     }
-
 }

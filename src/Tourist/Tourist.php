@@ -2,38 +2,31 @@
 
 namespace App\Tourist;
 
-use App\Rooms\DoubleRoom;
-use App\Rooms\LargeRoom;
+use App\BookRoomInterface;
 use App\Rooms\Room;
-use App\Rooms\SingleRoom;
 
-class Tourist
+class Tourist implements BookRoomInterface
 {
-    private array $room;
     private string $firstName;
     private string $lastName;
 
 
     public function __construct(
         string $firstName,
-        string $lastName,
-        Room   ...$room)
+        string $lastName)
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
-        $this->room = $room;
     }
 
-    public function getRoom(): array
+    public function bookRoom(Room $room): bool
     {
-        return $this->room;
+        if ($room->isBooked())
+            return false;
+        $room->setIsBooked(true);
+        echo "Room with number " . $room->getRoomSettings()[1] . " booked successfully.\n";
+        return true;
     }
-
-    public function setRoom(array $room): void
-    {
-        $this->room = $room;
-    }
-
 
     public function getFirstName(): string
     {
