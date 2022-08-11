@@ -4,59 +4,36 @@ namespace App\Tourist;
 
 use App\Rooms\DoubleRoom;
 use App\Rooms\LargeRoom;
+use App\Rooms\Room;
 use App\Rooms\SingleRoom;
 
 class Tourist
 {
-    private LargeRoom $largeRoom;
-    private SingleRoom $singleRoom;
-    private DoubleRoom $doubleRoom;
+    private array $room;
     private string $firstName;
     private string $lastName;
 
 
-    public function __construct(LargeRoom  $largeRoom,
-                                SingleRoom $singleRoom,
-                                DoubleRoom $doubleRoom,
-                                string     $firstName,
-                                string     $lastName)
+    public function __construct(
+        string $firstName,
+        string $lastName,
+        Room   ...$room)
     {
-        $this->largeRoom = $largeRoom;
-        $this->singleRoom = $singleRoom;
-        $this->doubleRoom = $doubleRoom;
         $this->firstName = $firstName;
         $this->lastName = $lastName;
+        $this->room = $room;
     }
 
-    public function getLargeRoom(): LargeRoom
+    public function getRoom(): array
     {
-        return $this->largeRoom;
+        return $this->room;
     }
 
-    public function setLargeRoom(LargeRoom $largeRoom): void
+    public function setRoom(array $room): void
     {
-        $this->largeRoom = $largeRoom;
+        $this->room = $room;
     }
 
-    public function getSingleRoom(): SingleRoom
-    {
-        return $this->singleRoom;
-    }
-
-    public function setSingleRoom(SingleRoom $singleRoom): void
-    {
-        $this->singleRoom = $singleRoom;
-    }
-
-    public function getDoubleRoom(): DoubleRoom
-    {
-        return $this->doubleRoom;
-    }
-
-    public function setDoubleRoom(DoubleRoom $doubleRoom): void
-    {
-        $this->doubleRoom = $doubleRoom;
-    }
 
     public function getFirstName(): string
     {
@@ -77,6 +54,4 @@ class Tourist
     {
         $this->lastName = $lastName;
     }
-
-
 }
